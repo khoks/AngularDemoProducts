@@ -1,0 +1,41 @@
+<div id="cart_container">
+  <h1>Cart</h1>
+  <span *ngIf="items.length">
+    <div *ngFor="let product of items" >
+      <span class="cart-item" >
+        {{product.name}}
+        {{product.price | currency}}
+      </span>
+      <button class="cart-item-button" (click)="removeItemByProduct(product)" >Remove</button>
+    </div>
+    <div class="cart-item-clear-all">
+      <button (click)="clearItems()" >Clear All</button>
+    </div>
+  </span>
+  <span *ngIf="items.length == 0">
+    <p>No items to show in cart</p>
+  </span>
+  <div class="cart-horizontal-break"></div>
+  <form [formGroup] = "checkoutForm" (ngSubmit) = "onSubmit(checkoutForm.value)">  
+    <div>
+      <div>
+        <label class="cart-form-label" for="name">
+          Name
+        </label>:
+        <input id="name" type="text" formControlName="name">
+      </div>
+      <div>
+        <label class="cart-form-label" for="address">
+          Address
+        </label>:
+        <input id="address" type="text" formControlName="address">
+      </div>
+      <button class="button" type="submit" [disabled]="purchaseDisabled">Purchase</button>
+      <span id="cart-items-purchased" >
+        {{purchaseSideText}}
+      </span>
+  </div>
+  </form>
+  <br/>
+  <a [routerLink] = "'/shipping'">Shipping Rates</a>&nbsp;|&nbsp;<a [routerLink] = "['/']">Back</a>
+</div>

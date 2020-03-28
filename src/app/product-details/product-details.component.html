@@ -1,0 +1,7 @@
+<p *ngIf="product">
+Name - {{product.name}} <br/>
+Description - {{product.description}} <br/>
+Price - {{product.price | currency}}
+</p>
+<app-add-to-cart [product]="product" (notify1)="notify1()" (notify2)="notify2()"></app-add-to-cart>
+&nbsp;<a [routerLink] = "['/']">Back</a>

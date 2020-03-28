@@ -1,0 +1,6 @@
+<span *ngIf="!added">
+  <button (click)="addToCart(product)">Add To Cart</button>
+</span>
+<span *ngIf="added">
+  <button (click)="removeFromCart(product)">Added(undo)</button>
+</span>
